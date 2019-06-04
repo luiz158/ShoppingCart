@@ -1,0 +1,22 @@
+pipeline {
+
+    agent any
+    tools {
+        maven 'LocalMaven' 
+    }
+    stages {
+        stage('Compile stage') {
+            steps {
+                bat "mvn clean compile" 
+        }
+    }
+
+          stage('deployment stage') {
+              steps {
+                bat "mvn deploy"
+        }
+    }
+
+  }
+
+}
