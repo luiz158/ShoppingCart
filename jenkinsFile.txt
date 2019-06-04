@@ -4,7 +4,7 @@ pipeline {
     tools {
         maven 'LocalMaven' 
     }
-  node {
+ stages {
   stage('SCM') {
     git 'https://github.com/foo/bar.git'
   }
@@ -14,9 +14,9 @@ pipeline {
     withSonarQubeEnv('My SonarQube Server') {
       sh "${C:/Program Files (x86)/sonar-scanner}/bin/sonar-scanner"
     }
-  }
+  
 }
-    stages {
+   
         stage('Compile stage') {
             steps {
                 bat "mvn clean compile" 
