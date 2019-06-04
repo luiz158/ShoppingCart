@@ -4,34 +4,16 @@ pipeline {
     tools {
         maven 'LocalMaven' 
     }
- stages {
+node {
   stage('SCM') {
-  steps{
     git 'https://github.com/foo/bar.git'
-    }
   }
   stage('SonarQube analysis') {
-
     // requires SonarQube Scanner 2.8+
     def scannerHome = tool 'SonarQube Scanner 2.8';
     withSonarQubeEnv('My SonarQube Server') {
-      sh "${C:/Program Files (x86)/sonar-scanner}/bin/sonar-scanner"
-    
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
   }
 }
-   
-        stage('Compile stage') {
-            steps {
-                bat "mvn clean compile" 
-        }
-    }
-
-          stage('deployment stage') {
-              steps {
-                bat "mvn test"
-        }
-    }
-
-  }
-
 }
