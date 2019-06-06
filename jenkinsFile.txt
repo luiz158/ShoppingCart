@@ -1,3 +1,9 @@
+pipeline{
+agent any
+ tools {
+        maven 'LocalMaven' 
+    }
+
 node{
     stage('SCM Checkout'){
     git 'https://github.com/PrasannaSosalePavamana/ShoppingCart.git'
@@ -5,14 +11,14 @@ node{
     
     stage('Compile'){
     def mavenHome= tool name: 'LocalMaven', type: 'maven'
-    sh "${mavenHome}/bin/mvn package"
+    sh "mvn package"
   
     }
      stage('SonarQube Analysis'){
     def mavenHome= tool name: 'LocalMaven', type: 'maven'
     withSonarQubeEnv('sonarqube') {
-    sh "${mavenHome}/bin/mvn sonar:sonar"
+    sh "mvn sonar:sonar"
     }
     }
     }
-    
+   } 
