@@ -1,7 +1,4 @@
 
- tools {
-        maven 'LocalMaven' 
-    }
 
 node{
     stage('SCM Checkout'){
