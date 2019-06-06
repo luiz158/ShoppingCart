@@ -1,36 +1,13 @@
-pipeline {
-    agent any
-     tools {
-        maven 'LocalMaven' 
+node{
+    stage('SCM Checkout'){
+    git 'https://github.com/PrasannaSosalePavamana/ShoppingCart.git'
     }
-    stages {
-        stage('SCM') {
-            steps {
-                git url: 'https://github.com/PrasannaSosalePavamana/ShoppingCart.git'
-            }
-        }
-        stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    // Optionally use a Maven environment you've configured already
-                  
-                        sh 'mvn sonar:sonar \
-  -Dsonar.projectKey=shopping \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=ddbeae93d099347daf97ccac4dd18bc9472a9048'
-                    
-                }
-            }
-        }
-        stage("Quality Gate") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                    // true = set pipeline to UNSTABLE, false = don't
-                    // Requires SonarQube Scanner for Jenkins 2.7+
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+    
+    stage('Compile'){
+    def mavenHome= tool name: 'localMaven', type: 'maven'
+    withSonarQubeEnv('sonarqube') {
+    sh "${mavenHome}/bin/mvn sonar:sonar"
     }
-}
+    }
+    }
+    
