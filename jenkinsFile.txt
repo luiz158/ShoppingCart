@@ -5,6 +5,11 @@ node{
     
     stage('Compile'){
     def mavenHome= tool name: 'LocalMaven', type: 'maven'
+    sh "${mavenHome}/bin/mvn package"
+  
+    }
+     stage('SonarQube Analysis'){
+    def mavenHome= tool name: 'LocalMaven', type: 'maven'
     withSonarQubeEnv('sonarqube') {
     sh "${mavenHome}/bin/mvn sonar:sonar"
     }
