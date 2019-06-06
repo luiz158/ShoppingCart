@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git url: 'https://github.com/PrasannaSosalePavamana/SpringBoot-vue.git'
+                git url: 'https://github.com/PrasannaSosalePavamana/ShoppingCart.git'
             }
         }
         stage('build && SonarQube analysis') {
