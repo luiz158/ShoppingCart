@@ -14,7 +14,10 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     // Optionally use a Maven environment you've configured already
                   
-                        sh 'mvn clean package sonar:sonar'
+                        sh 'mvn sonar:sonar \
+  -Dsonar.projectKey=shopping \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=ddbeae93d099347daf97ccac4dd18bc9472a9048'
                     
                 }
             }
