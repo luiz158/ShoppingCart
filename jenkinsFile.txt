@@ -13,7 +13,10 @@ node{
      stage('SonarQube Analysis'){
     def mavenHome= tool name: 'LocalMaven', type: 'maven'
     withSonarQubeEnv('sonarqube') {
-    sh "mvn sonar:sonar"
+    sh "mvn sonar:sonar \
+  -Dsonar.projectKey=Jenkins \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=e80c8e18383cd6a7ce6202ce793477a939815305"
     }
     }
     }
