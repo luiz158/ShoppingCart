@@ -28,9 +28,9 @@ node{
           }
           }
           
-          stage ("Deployment to Tomcat Server") {		//an arbitrary stage name
+          stage ("Deployment to Tomcat Server") {		
            
-                build 'Deployment'	//this is where we specify which job to invoke.
+                build 'Deployment'	
 
       }
     }
