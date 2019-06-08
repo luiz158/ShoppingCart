@@ -26,6 +26,11 @@ node{
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
           }
+          
+          stage ("build") {		//an arbitrary stage name
+           
+                build 'Job3'	//this is where we specify which job to invoke.
+
       }
     }
     
