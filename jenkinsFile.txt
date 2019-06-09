@@ -30,7 +30,7 @@ node{
             
           stage ("Artifact") {		
            
-                sh 'archive target/*.war'	
+               archive 'target/*.war'	
 
       }
           stage ("Deployment") {		
