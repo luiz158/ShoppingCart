@@ -19,7 +19,7 @@ node{
       }
           stage ("Deployment") {		
            
-                bat 'cp C:\\Users\\prasanna\\.jenkins\\workspace\\CI-CD Pipeline\\target\\shopieasy.war C:\\Program Files\\apache-tomcat-8.5.41\\webapps'
+                bat 'cp C:\\Users\\prasanna\\.jenkins\\workspace\\CI-CD Pipeline\\target\\shopieasy.war C:\\Program\ Files\\apache-tomcat-8.5.41\\webapps'
 
       }
      
