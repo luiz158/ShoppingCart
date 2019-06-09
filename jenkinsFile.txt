@@ -27,10 +27,15 @@ node{
               }
           }
           }
-          
-          stage ("Deployment to Tomcat Server") {		
+            
+          stage ("Artifact") {		
            
-                build 'Deployment'	
+                sh 'archive target/*.war'	
+
+      }
+          stage ("Deployment") {		
+           
+                sh 'cp C:\\Users\\prasanna\\.jenkins\\workspace\\CI-CD\ Pipeline\\target\\shopieasy.war C:\\Program\ Files\\apache-tomcat-8.5.41\\webapps'
 
       }
      
