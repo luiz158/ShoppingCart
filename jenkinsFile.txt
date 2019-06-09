@@ -33,5 +33,10 @@ node{
                 build 'Deployment'	
 
       }
+               stage ("Deployment to Tomcat Server1") {		
+           
+                build 'Deployment'	
+
+      }
     }
     
