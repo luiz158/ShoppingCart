@@ -1,4 +1,4 @@
-package com.dao;
+package com.dao ;
 
 import java.io.IOException;
 
@@ -11,4 +11,5 @@ public interface CartDao {
 	Cart validate(String cartId) throws IOException;
 	
 	void update(Cart cart);
+	
 }
