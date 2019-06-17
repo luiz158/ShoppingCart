@@ -11,7 +11,7 @@ node{
   
     }
    
-              stage('SonarQube Analysis'){
+              stage('SonarQube - Static Analysis'){
     def mavenHome= tool name: 'LocalMaven', type: 'maven'
     withSonarQubeEnv('sonarqube') {
     sh "mvn sonar:sonar \
@@ -38,7 +38,7 @@ node{
                 sh 'cp "C:/Users/prasanna/.jenkins/workspace/CI-CD Pipeline/target/shopieasy.war" "C:/Program Files/apache-tomcat-8.5.41/webapps"'
 
       }
-          stage ("Selenium") {		
+          stage ("Selenium - Dynamic Analysis") {		
          
                 build 'Selenium' 
 
